@@ -70,7 +70,7 @@ ts = adafruit_touchscreen.Touchscreen(
     board.TOUCH_YD,
     board.TOUCH_YU,
     calibration=((5200, 59000), (5800, 57000)),
-    size=(320, 240),
+    size=(480, 320),
 )
 
 # ---------- Set the font and preload letters ----------
@@ -86,7 +86,7 @@ splash = displayio.Group(max_size=200)
 board.DISPLAY.show(splash)
 
 # Make a background color fill
-color_bitmap = displayio.Bitmap(320, 240, 1)
+color_bitmap = displayio.Bitmap(480, 320, 1)
 color_palette = displayio.Palette(1)
 color_palette[0] = 0x3D0068
 bg_sprite = displayio.TileGrid(color_bitmap, x=0, y=0, pixel_shader=color_palette)
@@ -159,8 +159,8 @@ splash.append(feed2_label)
 # ------------- MQTT Topic Setup ------------- #
 
 mqtt_topic = "test/topic"
-# mqtt_temperature = "pyportal/temperature"
-# mqtt_lux = "pyportal/lux"
+mqtt_temperature = "pyportal/temperature"
+mqtt_lux = "pyportal/lux"
 mqtt_PIR = "pyportal/pir"
 mqtt_button1 = "pyportal/button1"
 mqtt_button2 = "pyportal/button2"
@@ -303,10 +303,10 @@ while True:
 
     # Publish sensor data to MQTT
     print("Sending light sensor value: %d" % light_value)
-    # client.publish(mqtt_lux, light_value)
+    client.publish(mqtt_lux, light_value)
 
     print("Sending temperature value: %d" % temperature)
-    # client.publish(mqtt_temperature, temperature)
+    client.publish(mqtt_temperature, temperature)
 
     print("Sending motion sensor value: %d" % movement_value)
-    # client.publish(mqtt_PIR, "{}".format(movement_value))
+    client.publish(mqtt_PIR, "{}".format(movement_value))
