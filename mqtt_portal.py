@@ -94,7 +94,7 @@ splash.append(bg_sprite)
 
 buttons = []
 # Default button styling:
-BUTTON_WIDTH = 100
+BUTTON_WIDTH = 150
 BUTTON_HEIGHT = 100
 BUTTON_MARGIN = 10
 
@@ -132,27 +132,27 @@ for b in buttons:
 
 # Text Label Objects
 temperature_label = Label(font, text="temperature", color=0xE300D2, max_glyphs=40)
-temperature_label.x = 130
+temperature_label.x = 180
 temperature_label.y = 20
 splash.append(temperature_label)
 
 light_label = Label(font, text="lux", color=0xE300D2, max_glyphs=40)
-light_label.x = 130
+light_label.x = 180
 light_label.y = 40
 splash.append(light_label)
 
 motion_label = Label(font, text="motion", color=0xE300D2, max_glyphs=40)
-motion_label.x = 130
+motion_label.x = 180
 motion_label.y = 60
 splash.append(motion_label)
 
 feed1_label = Label(font, text="MQTT feed1", color=0xE39300, max_glyphs=100)
-feed1_label.x = 130
+feed1_label.x = 180
 feed1_label.y = 130
 splash.append(feed1_label)
 
 feed2_label = Label(font, text="MQTT feed2", color=0x00DCE3, max_glyphs=100)
-feed2_label.x = 130
+feed2_label.x = 180
 feed2_label.y = 200
 splash.append(feed2_label)
 
@@ -201,7 +201,7 @@ def message(client, topic, message):
     """
     print("New message on topic {0}: {1}".format(topic, message))
     if topic == "pyportal/feed1":
-        feed1_label.text = "Next Bus: {}".format(message)
+        feed1_label.text = "Hello"
     if topic == "pyportal/feed2":
         feed2_label.text = "Weather: \n    {}".format(message)
     if topic == "pyportal/button1":
